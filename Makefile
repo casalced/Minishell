@@ -6,6 +6,10 @@ LIBFT = libft.a
 
 SRC_S = minishell.c\
 		lexer.c\
+		echo.c\
+		env.c\
+		pwd.c\
+		cd.c\
 
 OBJS = ${SRC_S:.c=.o}
 
