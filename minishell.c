@@ -6,13 +6,13 @@
 /*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 04:39:08 by casalced          #+#    #+#             */
-/*   Updated: 2023/06/13 16:04:15 by casalced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:41:38 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_data* g_data;
+t_data *g_data;
 
 static void clear_mem(){
 	rl_clear_history();
@@ -26,6 +26,12 @@ static void s_close(int signal){
 	clear_mem();
 	exit(signal);
 }
+/*
+static void s_error(int signal){
+	printf("Signal of memory error");
+	//error("Error memory reciebe");
+	signal++;
+}*/
 
 static void s_otherLine(int signal){
 	rl_replace_line("", 1);
@@ -34,6 +40,7 @@ static void s_otherLine(int signal){
 	rl_redisplay();
 	signal++;
 }
+
 static void s_nothing(int signal){
 	//g_data->prompt = readline("prompt> ");
 	printf("\n");
@@ -55,15 +62,10 @@ static void entrada(){
 		}
 		else{
 			add_history(g_data->prompt);
-			free(g_data->prompt);
+			//free(g_data->prompt);
 		}
 }	
 	
-
-
-
-
-
 int	main(int n_args, char **args, char **env){
 	int		error;
 	int 	con = 0;
@@ -75,6 +77,7 @@ int	main(int n_args, char **args, char **env){
 	signal(SIGKILL, s_close);
 	signal(SIGTERM, s_close);
 	signal(SIGQUIT, s_close);
+	//signal(SIGSEGV, s_error); //manejar errores memoria
 	signal(SIGINT, s_otherLine); //control + c
 	signal(SIGTSTP, s_nothing); //control + z
 
