@@ -2,7 +2,8 @@ NAME = minishell
 
 MINISHELL = minishell
 
-SRC_S = minishell.c
+SRC_S = minishell.c\
+		lexer.c\
 
 OBJS = ${SRC_S:.c=.o}
 

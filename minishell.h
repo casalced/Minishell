@@ -6,7 +6,7 @@
 /*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 04:42:28 by casalced          #+#    #+#             */
-/*   Updated: 2023/06/09 08:50:56 by casalced         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:05:00 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ typedef struct s_data
 	int	final;
 	char *prompt;
 } t_data;
+
+//minishell.c
+static void entrada();
+static void s_nothing(int signal);
+static void s_otherLine(int signal);
+static void s_close(int signal);
+static void clear_mem();
+
+//lexer.c
+
+
 
 
 #endif
