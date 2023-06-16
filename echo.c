@@ -6,7 +6,7 @@
 /*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 09:32:35 by casalced          #+#    #+#             */
-/*   Updated: 2023/06/14 12:03:22 by casalced         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:08:30 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void exe_echo(t_command *comand){
 	int n;
+	char * aux;
 
 	n = 0;
 	if(comand->attributes[0]){
@@ -22,7 +23,13 @@ void exe_echo(t_command *comand){
 		comand->attributes++;
 	}
 	while(*comand->attributes){
-		printf("%s", *comand->attributes);
+		aux = *comand->attributes;
+		aux++;
+		if(**comand->attributes == '$'){
+			if(getenv(aux) !=NULL)	
+				printf("%s", getenv(aux));
+		}	
+		else printf("%s", *comand->attributes);
 		comand->attributes++;
 		if(*comand->attributes)
 				printf(" ");
