@@ -6,7 +6,7 @@
 /*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:55:07 by casalced          #+#    #+#             */
-/*   Updated: 2023/06/14 23:34:26 by casalced         ###   ########.fr       */
+/*   Updated: 2023/06/23 03:13:10 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,32 @@ char** get_attributes(char **att){
 	
 }
 
+static void expand_att(t_command *comand){
+	char **aux;
+	char *str;
+	char *compose;
+	char *i_compose;
+
+	compose = ft_calloc(10000, sizeof(char));
+	i_compose = compose;
+	aux = comand->attributes;
+	while(*aux){
+		if(**aux == 39){
+			while(aux){
+			str = *aux;
+			while(*str && *str != 39)
+				*compose++ = *str++;
+			*compose++ = ' ';
+			aux++;	
+			}	
+		}
+		else 
+		i_compose = ft_strjoin(i_compose, *aux++);
+		printf("%s->",i_compose);
+	}
+	*comand->attributes = i_compose;
+}
+
 void exe_exit(){
 	clear_mem();
 	exit(0);
@@ -27,6 +53,7 @@ void single_command(t_data *g_data){
 	t_command *comand;
 	char **first_split;
 
+	
 	//separa la cadena en espacios
 	first_split = ft_split(g_data->prompt, ' ');
 	if(first_split){
@@ -38,6 +65,12 @@ void single_command(t_data *g_data){
 		printf("Command: %s ", comand->command);
 		printf("Attributes: %s ", comand->attributes[0]);
 	//	printf("Options %s \n", comand->options[0]);
+	
+	//reevaluate commands
+	expand_att(comand);
+	printf("New: %s\n", *comand->attributes);
+		
+	}
 	printf("\n");
 	if(comand->command != NULL){
 	if(!ft_strncmp(comand->command, "exit", ft_strlen(comand->command)))
@@ -54,7 +87,7 @@ void single_command(t_data *g_data){
 	}
 
 	
-}
+
 
 
 void pipex_command(t_data *g_data){

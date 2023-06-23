@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: casalced <casalced@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 00:36:27 by casalced          #+#    #+#             */
-/*   Updated: 2021/09/15 15:15:24 by casalced         ###   ########lyon.fr   */
+/*   Updated: 2023/06/23 01:52:58 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: casalced <casalced@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 04:42:28 by casalced          #+#    #+#             */
-/*   Updated: 2023/06/14 22:45:30 by casalced         ###   ########.fr       */
+/*   Updated: 2023/06/23 01:42:30 by casalced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include <sys/types.h>
 # include <readline/readline.h>
+//# include "/usr/share/readline/realine.h"
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
@@ -37,6 +38,8 @@ typedef struct s_command
 	char ** attributes;
 	char ** options;
 	char ** env;
+	char *input;
+	char *output;
 } t_command;
 
 //Datos globales del programa
